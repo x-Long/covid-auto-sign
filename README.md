@@ -15,7 +15,7 @@ nohup node run.js & 1>>log 2>>log # 后台运行run.js,监听3389端口
 ```
 ### 收集信息界面如下：  
 
-<img src="./image/demo.jpg" style="width:300px">
+<img src="https://x-long.github.io/imageRef/demo.jpg" style="width:300px">
 
 # 二、自动打卡
 
