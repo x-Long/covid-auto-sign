@@ -150,7 +150,7 @@ def main(h=0, m=1):
         time.sleep(20)
 
 if __name__ == '__main__':
-	p1_long = {"username": "2191221082", "password": "lxl1006738959"}
+	p1_long = {"username": "2191221082", "password": "lxlxxxxxxxx"}
 	email_long = "710450053@qq.com"
 	miss_time = datetime.datetime(2020, 6, 19)
 	def1_long, oldInfo_long = getInfo(p1_long)
