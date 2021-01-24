@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>疫情通</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+    <script src="./lib/jquery.min.js"></script>
+    <link rel="stylesheet" href="./lib/bootstrap-3.3.7.css">
+    <script src="./lib/modal.js"></script>
+</head>
+
+<body>
+    <br>
+    <div id="app">
+	    <div>1.0版自动打卡，使用的伙伴们这两天都基本运行稳定，现特意推出2.0版供大家体验，周一关闭当前页面。</div><br>
+        <div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        伙计，稍等几秒，验证一下~<span id="result"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">填写下列信息，帮你自动打卡疫情通</h1>
+            </div>
+            <div class="panel-body form-inline">
+                <span>姓名:</span>
+                <input type="text" v-model="name" class="form-control">
+                <span>邮箱:(务必准确填写邮箱)</span>
+                <input type="email" v-model="email" class="form-control">
+                <span>学号:</span>
+                <input type="text" v-model="username" class="form-control">
+                <span>密码: </span>
+                <input type="password" v-model="password" class="form-control">
+                <br>
+                <input type="button" value="提交" @click="add" class="btn btn-primary">
+                <br><br>
+                <span>注：邮箱请务必认真填写，如当晚12点没有收到成功提交的邮箱，则请手动确认。</span><br><br>
+                <span style="color: red">强调：</span><span>如果到处走动旅游，请自觉手动打卡！</span><br><br>
+                <span style="margin-bottom: 28px">说明：1、账号、密码同“西安理工大学服务门户”，即教职工为工号、学生为学号。 2、初始密码为身份证后6位（有字母则大写），如忘记密码或密码错误，请联系网络信息管理中心，电话：82312079（金花）82066108（曲江）</span><br><br>
+                <div style="text-align: center;margin-bottom: 8px;">By SimonLTS ♥</div>
+            </div>
+        </div>
+    </div>
+    <script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            name: '',
+            email: '',
+            username: '',
+            password: ''
+        },
+
+        methods: {
+            add() {
+                $('#loading').modal('show')
+                var _this = this;
+                $.ajax({
+                    url: 'http://39.97.221.205:3389/',
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: { "name": _this.name, "email": _this.email, "username": _this.username, "password": _this.password },
+                    success: function(res) {
+                        $('#loading').modal('hide')
+                        if (res == "0") {
+                            alert("ok,搞定，静候邮箱通知")
+                        } else {
+                            alert("账号或密码错误")
+                        }
+                    },
+                    error: function() {
+                        $('#loading').modal('hide')
+                        alert("请求错误")
+                    }
+                });
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>
