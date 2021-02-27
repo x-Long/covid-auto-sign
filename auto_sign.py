@@ -114,7 +114,7 @@ def commite(p1, def1, email):
         today = datetime.datetime.now()
         days = int((today - miss_time).days)
 
-        email_info = "杨萱小朋友你好："+"\n\n\t今天是喜欢xxx的第"+str(days)+"天~"+"\n\n\t在这里倾心通知您，疫情通已经提交，特殊时期，口罩常备多喝水~ "+"\n\n\t另外，小喇叭为您奉上明日天气，祝您天天好心情~~"+"今天是"+info["date"]+"，天气："+info["weather"]+"，实时温度："+info["real"]+"，明天最高温度："+info[
+        email_info = "小朋友你好："+"\n\n\t今天是喜欢xxx的第"+str(days)+"天~"+"\n\n\t在这里倾心通知您，疫情通已经提交，特殊时期，口罩常备多喝水~ "+"\n\n\t另外，小喇叭为您奉上明日天气，祝您天天好心情~~"+"今天是"+info["date"]+"，天气："+info["weather"]+"，实时温度："+info["real"]+"，明天最高温度："+info[
             'highest']+"\n\n\t"+"小贴士给您说："+info["tips"]+"\n\n-♥--♥--♥--♥--♥--♥-\n\n"+"♥♥♥ 今日份情话To YX ♥♥♥"+"\n\n"+json.loads(r1.text)["newslist"][0]["content"]+"\n\nYou are the apple of my eyes~\n-♥--♥--♥--♥--♥--♥-\n\n"
 
         # 这里使用SMTP_SSL 默认使用465端口
@@ -126,7 +126,7 @@ def commite(p1, def1, email):
 
         msg = MIMEText(email_info, "plain", "utf-8")
         msg["Subject"] = Header("疫情通打卡~", "utf-8")
-        msg["from"] = "simonLTS"
+        msg["from"] = "simonlts@163.com"
         msg["to"] = email
         print(11)
         smtp.sendmail("simonlts@163.com", email, msg.as_string())
@@ -150,8 +150,8 @@ def main(h=0, m=1):
         time.sleep(20)
 
 if __name__ == '__main__':
-	p1_long = {"username": "2191221082", "password": "lxlxxxxxxxx"}
+	p1_long = {"username": "2191221082", "password": "lxl********"}
 	email_long = "710450053@qq.com"
 	miss_time = datetime.datetime(2020, 6, 19)
 	def1_long, oldInfo_long = getInfo(p1_long)
-    main()
+	main()
