@@ -1,4 +1,4 @@
 # 获取到的用户登录信息格式如下
-
+ 
 {"name":"梁小龙","email":"710450053@qq.com","username":"219xxxxxxxx","password":"xxxxxxxx"}
 
